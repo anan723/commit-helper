@@ -1,0 +1,150 @@
+{
+  "skill_name": "commit-helper",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我刚添加了一个新的用户登录页面，包括前端表单组件和后端验证逻辑，帮我生成一个合适的 commit message",
+      "expected_output": "生成的 commit message 应该遵循 Conventional Commits 规范，类型为 feat，作用域可能为 auth 或 ui，描述简洁准确",
+      "files": [],
+      "assertions": [
+        {
+          "id": "feat-type",
+          "description": "Commit message should start with 'feat' type",
+          "type": "regex",
+          "pattern": "^feat",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "contains-scope",
+          "description": "Commit message should contain scope in parentheses (e.g., (auth) or (ui))",
+          "type": "regex",
+          "pattern": "\\([a-z-]+\\)",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "imperative-tense",
+          "description": "Description should use imperative present tense (e.g., 'add' not 'added')",
+          "type": "regex",
+          "pattern": ": add |: implement |: update ",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "no-ending-period",
+          "description": "Description should not end with period",
+          "type": "regex",
+          "pattern": "\\.$",
+          "file": "commit_message.txt",
+          "should_match": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "修复了购物车页面在 Safari 浏览器上的显示问题，商品数量显示错位，已经调整了 CSS",
+      "expected_output": "生成的 commit message 应该类型为 fix，作用域可能为 ui 或 cart，描述应准确反映修复的问题",
+      "files": [],
+      "assertions": [
+        {
+          "id": "fix-type",
+          "description": "Commit message should start with 'fix' type",
+          "type": "regex",
+          "pattern": "^fix",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "contains-cart-or-ui-scope",
+          "description": "Commit message should contain scope related to cart or ui",
+          "type": "regex",
+          "pattern": "\\((cart|ui|frontend)\\)",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "mentions-safari-or-display",
+          "description": "Description should mention Safari or display issue",
+          "type": "regex",
+          "pattern": "(Safari|display|layout|错位)",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "imperative-tense",
+          "description": "Description should use imperative present tense",
+          "type": "regex",
+          "pattern": ": correct |: fix |: adjust |: update ",
+          "file": "commit_message.txt"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "更新了项目 README 文件，添加了更详细的安装步骤和使用示例，也修正了几个错别字",
+      "expected_output": "生成的 commit message 应该类型为 docs，作用域可能为 readme，描述应说明文档更新内容",
+      "files": [],
+      "assertions": [
+        {
+          "id": "docs-type",
+          "description": "Commit message should start with 'docs' type",
+          "type": "regex",
+          "pattern": "^docs",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "contains-readme-scope",
+          "description": "Commit message should contain scope related to readme",
+          "type": "regex",
+          "pattern": "\\((readme|docs|documentation)\\)",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "mentions-installation-or-examples",
+          "description": "Description should mention installation steps or examples",
+          "type": "regex",
+          "pattern": "(install|example|README|documentation)",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "imperative-tense",
+          "description": "Description should use imperative present tense",
+          "type": "regex",
+          "pattern": ": update |: add |: fix ",
+          "file": "commit_message.txt"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "我刚修改了配置文件，升级了 webpack 从 4.x 到 5.x，还调整了一些构建配置，需要提交这些更改",
+      "expected_output": "生成的 commit message 应该类型为 chore 或 build，作用域可能为 config 或 build，描述应反映配置更新",
+      "files": [],
+      "assertions": [
+        {
+          "id": "chore-or-build-type",
+          "description": "Commit message should start with 'chore' or 'build' type",
+          "type": "regex",
+          "pattern": "^(chore|build)",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "contains-build-or-config-scope",
+          "description": "Commit message should contain scope related to build or config",
+          "type": "regex",
+          "pattern": "\\((build|config|webpack|deps)\\)",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "mentions-webpack-upgrade",
+          "description": "Description should mention webpack upgrade or configuration",
+          "type": "regex",
+          "pattern": "(webpack|build|config|upgrade)",
+          "file": "commit_message.txt"
+        },
+        {
+          "id": "imperative-tense",
+          "description": "Description should use imperative present tense",
+          "type": "regex",
+          "pattern": ": upgrade |: update |: adjust |: modify ",
+          "file": "commit_message.txt"
+        }
+      ]
+    }
+  ]
+}
